@@ -732,6 +732,58 @@ function renderWishes() {
   });
 }
 
+/* RSVP DAN WISHES — TERSIMPAN DI BROWSER INI */
+const rsvpForm = document.getElementById("rsvpForm");
+const wishesList = document.getElementById("wishesList");
+const rsvpMessage = document.getElementById("rsvpMessage");
+const storageKey = "arrasyaBirthdayWishes";
+
+function getWishes() {
+  try {
+    return JSON.parse(localStorage.getItem(storageKey) || "[]");
+  } catch (error) {
+    return [];
+  }
+}
+
+function renderWishes() {
+  const wishes = getWishes();
+  wishesList.replaceChildren();
+
+  if (wishes.length === 0) {
+    const empty = document.createElement("p");
+    empty.className = "note";
+    empty.textContent = "Belum ada ucapan. Jadilah yang pertama!";
+    wishesList.appendChild(empty);
+    return;
+  }
+
+  wishes.slice().reverse().forEach(item => {
+    const entry = document.createElement("div");
+    entry.style.cssText =
+      "text-align:left;padding:14px;margin:12px 0;" +
+      "background:#111;border:1px solid #5a3030;border-radius:12px;";
+
+    const name = document.createElement("strong");
+    name.style.color = "#ff4148";
+    name.textContent = item.name;
+
+    const status = document.createElement("p");
+    status.style.margin = "5px 0";
+    status.textContent =
+      item.attendance === "Hadir"
+        ? "🏁 Akan hadir"
+        : "💌 Belum bisa hadir";
+
+    const message = document.createElement("p");
+    message.style.cssText = "margin:8px 0 0;white-space:pre-wrap;";
+    message.textContent = item.wishes;
+
+    entry.append(name, status, message);
+    wishesList.appendChild(entry);
+  });
+}
+
 rsvpForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
