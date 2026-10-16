@@ -680,57 +680,117 @@ document.getElementById("startEngines").addEventListener("click", async () => {
   }
 });
 
-/* RSVP DAN WISHES — TERSIMPAN DI BROWSER INI */
+
+/* RSVP ARRASYA — GOOGLE SHEETS */
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwE23c39LloWQRNgb2vL9DqEbJXWwQVpKERKrGz24kg42FqXWNIhoDwePR_S4qy_qU/exec";
+
 const rsvpForm = document.getElementById("rsvpForm");
 const wishesList = document.getElementById("wishesList");
 const rsvpMessage = document.getElementById("rsvpMessage");
-const storageKey = "arrasyaBirthdayWishes";
 
-function getWishes() {
-  try {
-    return JSON.parse(localStorage.getItem(storageKey) || "[]");
-  } catch (error) {
-    return [];
-  }
-}
+function loadWishes() {
+  const callbackName =
+    "arrasyaWishes_" + Date.now() + "_" +
+    Math.floor(Math.random() * 100000);
 
-function renderWishes() {
-  const wishes = getWishes();
-  wishesList.replaceChildren();
+  const script = document.createElement("script");
 
-  if (wishes.length === 0) {
-    const empty = document.createElement("p");
-    empty.className = "note";
-    empty.textContent = "Belum ada ucapan. Jadilah yang pertama!";
-    wishesList.appendChild(empty);
-    return;
-  }
+  window[callbackName] = function (result) {
+    wishesList.replaceChildren();
 
-  wishes.slice().reverse().forEach(item => {
-    const entry = document.createElement("div");
-    entry.style.cssText =
-      "text-align:left;padding:14px;margin:12px 0;" +
-      "background:#111;border:1px solid #5a3030;border-radius:12px;";
+    const wishes = result && Array.isArray(result.wishes)
+      ? result.wishes
+      : [];
 
-    const name = document.createElement("strong");
-    name.style.color = "#ff4148";
-    name.textContent = item.name;
+    if (wishes.length === 0) {
+      const empty = document.createElement("p");
+      empty.className = "note";
+      empty.textContent = "Belum ada ucapan. Jadilah yang pertama!";
+      wishesList.appendChild(empty);
+      return;
+    }
 
-    const status = document.createElement("p");
-    status.style.margin = "5px 0";
-    status.textContent =
-      item.attendance === "Hadir"
+    wishes.slice().reverse().forEach(item => {
+      const entry = document.createElement("div");
+      entry.style.cssText =
+        "text-align:left;padding:14px;margin:12px 0;" +
+        "background:#111;border:1px solid #5a3030;border-radius:12px;";
+
+      const name = document.createElement("strong");
+      name.style.color = "#ff4148";
+      name.textContent = item.name;
+
+      const status = document.createElement("p");
+      status.style.margin = "5px 0";
+      status.textContent = item.attendance === "Hadir"
         ? "🏁 Akan hadir"
         : "💌 Belum bisa hadir";
 
-    const message = document.createElement("p");
-    message.style.cssText = "margin:8px 0 0;white-space:pre-wrap;";
-    message.textContent = item.wishes;
+      const message = document.createElement("p");
+      message.style.cssText =
+        "margin:8px 0 0;white-space:pre-wrap;";
+      message.textContent = item.wishes;
 
-    entry.append(name, status, message);
-    wishesList.appendChild(entry);
-  });
+      entry.append(name, status, message);
+      wishesList.appendChild(entry);
+    });
+  };
+
+  script.onerror = function () {
+    wishesList.textContent =
+      "Ucapan belum bisa dimuat. Coba refresh halaman.";
+    delete window[callbackName];
+    script.remove();
+  };
+
+  script.src = SCRIPT_URL +
+    "?callback=" + encodeURIComponent(callbackName) +
+    "&t=" + Date.now();
+
+  document.body.appendChild(script);
 }
+
+rsvpForm.addEventListener("submit", async function (event) {
+  event.preventDefault();
+
+  const name = document.getElementById("guest").value.trim();
+  const attendance = document.getElementById("attendance").value;
+  const wishes = document.getElementById("wishes").value.trim();
+
+  if (!name || !wishes) {
+    rsvpMessage.textContent = "Nama dan wishes harus diisi ya ❤️";
+    return;
+  }
+
+  const submitButton = rsvpForm.querySelector('button[type="submit"]');
+  submitButton.disabled = true;
+  submitButton.textContent = "MENGIRIM...";
+
+  try {
+    await fetch(SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      },
+      body: JSON.stringify({ name, attendance, wishes })
+    });
+
+    rsvpMessage.textContent =
+      "Ucapan sedang dikirim. Periksa kembali daftar wishes sebentar lagi ❤️";
+
+    rsvpForm.reset();
+    setTimeout(loadWishes, 2500);
+  } catch (error) {
+    rsvpMessage.textContent =
+      "Pengiriman gagal. Periksa koneksi dan coba lagi.";
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = "KIRIM UCAPAN ❤️";
+  }
+});
+
+loadWishes();
 
 /* RSVP DAN WISHES — TERSIMPAN DI BROWSER INI */
 const rsvpForm = document.getElementById("rsvpForm");
