@@ -743,9 +743,9 @@ function loadWishes() {
     script.remove();
   };
 
+
 script.src = SCRIPT_URL +
-  "?callback=" + encodeURIComponent(callbackName) +
-  "&t=" + Date.now();
+  "?callback=" + encodeURIComponent(callbackName);
 
 document.body.appendChild(script);
 }
