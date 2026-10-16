@@ -177,6 +177,32 @@ label {
   font-size: 13px;
   margin-top: 15px;
 }
+  .note {
+  color: #aaa;
+  font-size: 13px;
+  margin-top: 15px;
+}
+
+/* Tempel CSS video di bawah sini */
+.birthday-video-frame {
+  width: min(100%, 300px);
+  margin: 20px auto;
+  padding: 5px;
+  border: 3px solid #ff3434;
+  border-radius: 18px;
+  background: #111;
+  box-shadow: 0 0 24px rgba(255, 41, 41, 0.3);
+  overflow: hidden;
+}
+
+.birthday-video {
+  display: block;
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 11px;
+  background: #000;
+}
 </style>
 </head>
 
@@ -233,8 +259,24 @@ label {
   <h2>🏁 EVENT DETAILS</h2>
 
   <div class="card">
-    <p>🏆 <strong>THE BIRTHDAY STAR</strong></p>
-    <h2 class="red">Muhammad Arrasya Khalid Ilmi Rezkirawan</h2>
+  <p>🏆 <strong>THE BIRTHDAY STAR</strong></p>
+
+<div class="birthday-video-frame">
+  <video
+    class="birthday-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    controls
+    preload="metadata"
+  >
+    <source src="./Arasya-video.mp4" type="video/mp4">
+    Browser kamu belum mendukung video.
+  </video>
+</div>
+
+<h2 class="red">Muhammad Arrasya Khalid Ilmi Rezkirawan</h2>
     <p>First Birthday Celebration</p>
     <hr style="border-color:#444;margin:20px 0">
 
