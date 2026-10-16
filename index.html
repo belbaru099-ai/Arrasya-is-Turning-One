@@ -123,8 +123,19 @@ h1 span,
 }
 
 .car {
-  font-size: 30px;
-  margin: 2px 0 15px;
+  font-size: 34px;
+  margin: 8px 0 18px;
+  display: inline-block;
+  animation: raceCar 1.8s ease-in-out infinite;
+}
+
+@keyframes raceCar {
+  0%, 100% {
+    transform: translateX(-12px);
+  }
+  50% {
+    transform: translateX(12px);
+  }
 }
 
 .btn {
@@ -424,10 +435,18 @@ footer {
     <p>🏆 <strong>THE BIRTHDAY STAR</strong></p>
 
     <div class="birthday-video-frame">
-      <video class="birthday-video" controls playsinline preload="metadata">
-        <source src="./Arasya-video.mp4" type="video/mp4">
-        Browser kamu tidak mendukung video.
-      </video>
+      <video
+  class="birthday-video"
+  autoplay
+  muted
+  loop
+  playsinline
+  controls
+  preload="auto"
+>
+  <source src="./Arasya-video.mp4" type="video/mp4">
+  Browser kamu tidak mendukung video.
+</video>
     </div>
 
     <h2 class="birthday-name">
@@ -577,6 +596,14 @@ document.getElementById("rsvpForm").addEventListener("submit", function(e) {
     "https://wa.me/" + phone + "?text=" + encodeURIComponent(message),
     "_blank"
   );
+});
+  <script>
+const birthdayVideo = document.querySelector(".birthday-video");
+
+birthdayVideo.muted = true;
+
+birthdayVideo.play().catch(() => {
+  // Jika browser memblokir autoplay, tamu bisa menekan tombol play.
 });
 </script>
 
