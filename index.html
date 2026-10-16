@@ -55,7 +55,16 @@ h1 {
 h1 span {
   color: #ff2929;
 }
-
+.baby-photo {
+  width: min(78%, 320px);
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 25%;
+  border: 3px solid #ff3434;
+  border-radius: 18px;
+  margin: 0 auto 24px;
+  box-shadow: 0 0 25px rgba(255, 41, 41, 0.3);
+}
 .subtitle {
   color: #ddd;
   line-height: 1.8;
@@ -179,6 +188,11 @@ label {
   <p class="tag">YOU ARE INVITED TO</p>
 
   <h1>BABY<br><span>ARASYA</span><br>TURNS ONE!</h1>
+  <img
+  src="./Arasya.jpg"
+  alt="Baby Arrasya, little racing champion"
+  class="baby-photo"
+>
 
   <p class="subtitle">
     One year of love, laughter & little adventures.<br>
