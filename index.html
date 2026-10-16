@@ -544,31 +544,55 @@ footer p { margin: 5px; }
   <p class="note">Jangan lupa set alarmmu!</p>
 </section>
 
-<section>
+<section id="rsvp">
   <p class="tag">JOIN THE GRID</p>
-  <h2>Apakah Kamu <span class="red">Akan Hadir di Hari Spesialku?</span></h2>
+  <h2>ARE YOU COMING?</h2>
 
   <p class="intro-copy">
-    Your presence will make our little racer's day even more special!
+    Kehadiranmu akan membuat hari spesial Arrasya semakin berkesan!
+    Jangan lupa tinggalkan doa dan ucapan untuk Arrasya ❤️
   </p>
 
   <div class="card">
     <form id="rsvpForm">
       <label for="guest">Nama tamu</label>
-      <input id="guest" type="text" placeholder="Masukkan nama kamu" required>
+      <input
+        id="guest"
+        type="text"
+        placeholder="Masukkan nama kamu"
+        required
+      >
 
       <label for="attendance">Konfirmasi kehadiran</label>
-      <select id="attendance">
-        <option value="Hadir">Iya, aku akan hadir!</option>
-        <option value="Tidak hadir">Maaf, belum bisa hadir</option>
+      <select id="attendance" required>
+        <option value="Hadir">🎉 Ya, saya akan hadir!</option>
+        <option value="Tidak hadir">💌 Maaf, belum bisa hadir</option>
       </select>
 
+      <label for="wishes">Wishes untuk Arrasya ❤️</label>
+      <textarea
+        id="wishes"
+        rows="4"
+        maxlength="500"
+        placeholder="Tulis doa dan ucapan terbaikmu..."
+        required
+        style="display:block;width:100%;padding:13px 12px;background:#111;color:#fff;border:1px solid #666;border-radius:8px;font:inherit;margin:0 0 16px;resize:vertical;"
+      ></textarea>
+
       <button class="submit-button" type="submit">
-        SEND RSVP VIA WHATSAPP
+        KIRIM UCAPAN ❤️
       </button>
     </form>
 
-    <p class="note">Konfirmasi dikirim melalui WhatsApp.</p>
+    <p id="rsvpMessage" class="note" aria-live="polite"></p>
+  </div>
+
+  <div class="card">
+    <h2>💌 Wishes for Arrasya</h2>
+    <p class="note">Doa dan ucapan dari orang-orang tersayang.</p>
+    <div id="wishesList" aria-live="polite">
+      <p class="note">Belum ada ucapan. Jadilah yang pertama!</p>
+    </div>
   </div>
 </section>
 
