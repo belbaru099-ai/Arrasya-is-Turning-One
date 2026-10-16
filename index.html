@@ -2,525 +2,532 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#e10600">
-<title>Arrasya Is Turning One!</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#190707">
+<title>Baby Arrasya Turns One!</title>
 
 <style>
 :root {
-  --red: #e10600;
-  --black: #101010;
-  --white: #fff;
-  --cream: #fff8f0;
+  --red: #ed252e;
+  --dark: #101010;
+  --panel: #1b1b1b;
+  --muted: #cfcfcf;
 }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: var(--black);
-  color: var(--white);
+  background:
+    radial-gradient(ellipse at 50% 0%, #721414 0%, transparent 55%),
+    linear-gradient(180deg, #180707, #101010 48%, #1b0808);
+  color: #fff;
+  text-align: center;
   overflow-x: hidden;
 }
 
 .hero {
   min-height: 100vh;
   min-height: 100svh;
-  padding: 45px 20px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  text-align: center;
-  background: linear-gradient(145deg, #e10600 0%, #700400 42%, #101010 100%);
+  align-items: center;
+  padding: 72px 20px 54px;
   position: relative;
+  isolation: isolate;
   overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(12,8,8,.25), rgba(15,10,10,.7)),
+    repeating-linear-gradient(
+      165deg,
+      transparent 0 70px,
+      rgba(255,255,255,.035) 71px 74px,
+      transparent 75px 130px
+    ),
+    radial-gradient(ellipse at 50% 30%, #8b1515, #300808 60%, #101010);
 }
 
-.hero::before {
+.hero:before {
   content: "";
   position: absolute;
-  width: 250px;
-  height: 250px;
-  border: 25px solid #ffffff0d;
-  transform: rotate(35deg);
-  top: -120px;
-  left: -90px;
+  z-index: -1;
+  width: 150%;
+  height: 150px;
+  left: -25%;
+  bottom: 5%;
+  transform: rotate(-12deg);
+  border-top: 10px solid #eee;
+  border-bottom: 10px solid var(--red);
+  background: repeating-linear-gradient(
+    90deg, #f5f5f5 0 30px, #e52323 30px 60px
+  );
+  opacity: .12;
+  filter: blur(1px);
 }
 
-.hero-content {
-  position: relative;
-  width: 100%;
-  max-width: 700px;
+.hero:after {
+  content: "🏁  🏎️  🏁";
+  position: absolute;
+  top: 25px;
+  right: 8px;
+  font-size: 23px;
+  transform: rotate(8deg);
+  opacity: .75;
+  pointer-events: none;
 }
 
-.eyebrow {
-  font-size: .78rem;
-  letter-spacing: .2em;
-  font-weight: 900;
-  text-transform: uppercase;
+.flag {
+  margin-bottom: 12px;
+  font-size: 22px;
+}
+
+.tag {
+  font-size: .82rem;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: #ff777c;
+  margin: 0 0 12px;
 }
 
 h1 {
-  font-size: clamp(2.5rem, 8vw, 5.5rem);
-  line-height: .98;
-  letter-spacing: -.05em;
-  text-transform: uppercase;
-  margin: 18px 0 12px;
-  font-weight: 950;
-  text-shadow: 4px 4px #0005;
+  font-size: clamp(2.2rem, 8vw, 4.6rem);
+  line-height: 1.04;
+  margin: 8px 0 20px;
+  font-weight: 900;
+  letter-spacing: 1px;
 }
 
-.subtitle {
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-bottom: 25px;
-}
-
-.photo-frame {
-  width: 210px;
-  height: 250px;
-  margin: 0 auto 25px;
-  padding: 7px;
-  background: white;
-  border: 3px solid #111;
-  box-shadow: 8px 8px #0005;
-  transform: rotate(-2deg);
-}
+h1 span, .red { color: #ff4148; }
 
 .baby-photo {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 220px;
+  max-width: 75%;
+  height: 260px;
   object-fit: cover;
+  object-position: center 25%;
+  margin: 12px auto 22px;
+  border: 3px solid var(--red);
+  border-radius: 16px;
+  box-shadow: 0 8px 30px #0006;
 }
 
-.race-track {
-  width: min(100%, 360px);
-  height: 55px;
-  margin: 10px auto 20px;
-  position: relative;
-  border-bottom: 3px dashed #ffffff88;
-  overflow: hidden;
-}
-
-.race-car {
-  position: absolute;
-  left: 0;
-  bottom: 4px;
-  font-size: 2.5rem;
-  animation: drive 2.5s ease-in-out infinite alternate;
-}
-
-@keyframes drive {
-  from { transform: translateX(0); }
-  to { transform: translateX(280px); }
-}
-
-.start-button, .button {
-  display: inline-block;
-  padding: 15px 22px;
-  border: 3px solid white;
-  background: #101010;
-  color: white;
-  text-decoration: none;
-  font-weight: 900;
-  letter-spacing: .04em;
-  box-shadow: 5px 5px #0005;
-  cursor: pointer;
-}
-
-.start-button:hover, .button:hover {
-  background: #333;
-}
-
-.hint {
-  font-size: .8rem;
-  opacity: .8;
-  margin-top: 16px;
-}
-
-.section {
-  padding: 65px 20px;
-}
-
-.inner {
-  width: 100%;
-  max-width: 900px;
-  margin: auto;
-}
-
-.light {
-  background: var(--cream);
-  color: var(--black);
-}
-
-.red {
-  background: var(--red);
-  color: white;
-}
-
-.dark {
-  background: #141414;
-  color: white;
-}
-
-.label {
-  font-size: .75rem;
-  letter-spacing: .18em;
-  font-weight: 900;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-}
-
-h2 {
-  font-size: clamp(2rem, 6vw, 3.5rem);
-  line-height: 1.05;
-  text-transform: uppercase;
-  margin: 0 0 20px;
-}
-
-.intro {
-  max-width: 680px;
+.subtitle {
+  max-width: 620px;
+  font-size: clamp(1rem, 3.8vw, 1.25rem);
   line-height: 1.7;
-  font-size: 1rem;
+  margin: 8px auto 16px;
+}
+
+/* Mobil bergerak bolak-balik tanpa mengubah layout halaman */
+.car {
+  font-size: 30px;
+  margin: 2px 0 15px;
+  display: inline-block;
+  transform-origin: center;
+  animation: carRace 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes carRace {
+  from { transform: translateX(-28px); }
+  to   { transform: translateX(28px); }
+}
+
+.btn {
+  display: inline-block;
+  background: var(--red);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: .5px;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  padding: 14px 22px;
+  box-shadow: 0 5px 0 #8d1117;
+  transition: transform .15s, background .15s;
+}
+
+.btn:hover {
+  background: #ff4148;
+  transform: translateY(-2px);
+}
+
+.note {
+  color: #d5d5d5;
+  font-size: .92rem;
+  line-height: 1.6;
+  margin: 18px auto 0;
+}
+
+.checkered {
+  height: 14px;
+  background: repeating-linear-gradient(
+    90deg, #fff 0 14px, #171717 14px 28px
+  );
+  opacity: .75;
+}
+
+section {
+  padding: 58px 18px;
+  position: relative;
+  background:
+    radial-gradient(ellipse at top, #351010 0%, transparent 65%),
+    #111;
+}
+
+section h2 {
+  font-size: clamp(1.55rem, 5vw, 2.3rem);
+  line-height: 1.2;
+  margin: 10px auto 22px;
+}
+
+.intro-copy {
+  line-height: 1.85;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto 24px;
 }
 
 .countdown {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 10px;
-  margin-top: 30px;
+  width: min(100%, 520px);
+  margin: 28px auto 16px;
 }
 
-.time-box {
-  text-align: center;
-  background: #101010;
-  color: white;
-  padding: 18px 5px;
-  border-bottom: 5px solid var(--red);
+.time {
+  min-width: 0;
+  padding: 16px 5px;
+  background: linear-gradient(145deg, #292929, #171717);
+  border: 1px solid #5a3030;
+  border-bottom: 3px solid var(--red);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
 }
 
-.time-number {
-  display: block;
-  font-size: clamp(1.5rem, 5vw, 2.7rem);
-  font-weight: 900;
+.time strong {
+  font-size: clamp(1.45rem, 5vw, 2.15rem);
+  line-height: 1;
   font-variant-numeric: tabular-nums;
 }
 
-.time-label {
-  display: block;
-  margin-top: 5px;
-  font-size: .65rem;
-  font-weight: 900;
-  letter-spacing: .1em;
+.time small {
+  font-size: clamp(.58rem, 2vw, .75rem);
+  letter-spacing: 1px;
+  color: #ddd;
 }
 
-.event-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-  margin: 28px 0;
+#details {
+  background:
+    repeating-linear-gradient(
+      135deg, rgba(255,255,255,.018) 0 2px, transparent 2px 24px
+    ),
+    linear-gradient(180deg, #1b1b1b, #260909 55%, #171717);
 }
 
-.event-card {
-  border: 2px solid currentColor;
-  padding: 20px;
-  background: #ffffff0d;
+.card {
+  background: linear-gradient(145deg, #292929, #171717);
+  border: 1px solid #555;
+  border-radius: 18px;
+  box-shadow: 0 12px 35px #0006;
+  padding: 25px 18px;
+  margin: 18px auto;
+  max-width: 480px;
+  line-height: 1.7;
 }
 
-.event-card strong {
-  display: block;
-  font-size: .8rem;
-  margin-bottom: 8px;
-}
-
-.event-card p {
-  margin: 0;
-  line-height: 1.5;
-}
-
-.video-frame {
-  max-width: 420px;
-  margin: 30px auto 0;
-  padding: 8px;
-  background: white;
-  box-shadow: 8px 8px #0004;
+.birthday-video-frame {
+  width: 100%;
+  max-width: 260px;
+  margin: 18px auto;
+  padding: 4px;
+  border: 2px solid var(--red);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #111;
 }
 
 .birthday-video {
   display: block;
   width: 100%;
-  max-height: 520px;
+  height: auto;
+  max-height: 330px;
   object-fit: contain;
-  background: black;
+  border-radius: 9px;
+  background: #111;
 }
 
-.rsvp-form {
-  display: grid;
-  gap: 15px;
-  max-width: 550px;
-  margin-top: 28px;
+.birthday-name {
+  font-size: clamp(1.3rem, 4.8vw, 1.8rem);
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+  margin: 18px 0 10px;
 }
 
-.rsvp-form label {
-  display: grid;
-  gap: 8px;
-  font-weight: bold;
-  font-size: .85rem;
+hr {
+  border: 0;
+  border-top: 1px solid #555;
+  margin: 22px 0;
 }
 
-.rsvp-form input, .rsvp-form select {
+.detail-label {
+  margin: 14px 0 3px;
+  font-weight: 700;
+}
+
+.detail-value {
+  margin: 0;
+  color: #eee;
+}
+
+form { text-align: left; }
+
+label {
+  display: block;
+  font-weight: 700;
+  margin: 12px 0 6px;
+}
+
+input, select {
+  display: block;
+  width: 100%;
+  padding: 13px 12px;
+  background: #111;
+  color: #fff;
+  border: 1px solid #666;
+  border-radius: 8px;
+  font: inherit;
+  margin: 0 0 16px;
+}
+
+input:focus, select:focus {
+  outline: 2px solid var(--red);
+  outline-offset: 1px;
+}
+
+button { font: inherit; }
+
+.submit-button {
   width: 100%;
   padding: 14px;
-  min-height: 48px;
-  border: 2px solid #101010;
-  border-radius: 0;
-  background: white;
-  color: #101010;
-  font: inherit;
+  background: var(--red);
+  color: #fff;
+  font-weight: 800;
+  border: 0;
+  border-radius: 9px;
+  cursor: pointer;
 }
 
-.rsvp-form .button {
-  justify-self: start;
-  border-color: #101010;
-}
-
-.note {
-  font-size: .82rem;
-  line-height: 1.6;
-}
+.submit-button:hover { background: #ff4148; }
 
 .music-button {
   position: fixed;
-  z-index: 10;
-  right: 12px;
-  bottom: 12px;
-  border: 2px solid white;
-  padding: 12px 14px;
-  background: #101010;
-  color: white;
-  font-weight: 800;
+  top: 12px;
+  left: 12px;
+  z-index: 999;
+  background: var(--red);
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  padding: 9px 13px;
+  font-size: .88rem;
+  box-shadow: 0 4px 14px #0006;
   cursor: pointer;
-  box-shadow: 3px 3px #0005;
 }
 
 footer {
-  padding: 25px 15px;
-  text-align: center;
-  background: #080808;
-  font-size: .75rem;
-  letter-spacing: .1em;
+  padding: 30px 18px;
+  background: #0c0c0c;
+  color: #ddd;
+  line-height: 1.7;
 }
 
-@media (max-width: 520px) {
-  .photo-frame { width: 180px; height: 215px; }
-  .event-grid { grid-template-columns: 1fr; }
-  .section { padding: 50px 18px; }
+footer p { margin: 5px; }
+
+@media(max-width: 420px) {
+  .hero { padding: 66px 16px 42px; }
+  .baby-photo { width: 200px; height: 240px; }
   .countdown { gap: 6px; }
-  .time-box { padding: 14px 3px; }
-  .time-label { font-size: .55rem; letter-spacing: .04em; }
-  .music-button { font-size: .75rem; right: 8px; bottom: 8px; }
+  .time { padding: 13px 2px; }
+  .card { padding: 22px 14px; }
+  .music-button {
+    top: 9px;
+    left: 9px;
+    padding: 8px 11px;
+    font-size: .8rem;
+  }
+  section { padding: 48px 14px; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation: none !important;
-    scroll-behavior: auto !important;
-  }
+@media(prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn, .car { transition: none; animation: none; }
 }
 </style>
 </head>
 
 <body>
 
-<header class="hero" id="home">
-  <div class="hero-content">
-    <p class="eyebrow">Lights Out • And Away We Go!</p>
-    <h1>Arrasya<br>Is Turning One!</h1>
-    <p class="subtitle">Our Little Champion's First Lap 🏁</p>
-
-    <div class="photo-frame">
-      <img class="baby-photo"
-           src="./Arasya.jpg"
-           alt="Foto Arrasya">
-    </div>
-
-    <div class="race-track" aria-hidden="true">
-      <span class="race-car">🏎️</span>
-    </div>
-
-    <a href="#details" class="start-button" id="startEngines">
-      START YOUR ENGINES! →
-    </a>
-    <p class="hint">Tap to start the celebration 🎉</p>
-  </div>
-</header>
-
-<main>
-
-<section class="section light">
-  <div class="inner">
-    <p class="label">The Big Race Is Coming</p>
-    <h2>Countdown to the First Lap</h2>
-    <p class="intro">
-      Satu putaran istimewa, satu tahun penuh cinta.
-      Kami ingin merayakan hari spesial Arrasya bersama
-      keluarga dan teman-teman tersayang.
-    </p>
-
-    <div class="countdown" id="countdown">
-      <div class="time-box">
-        <span class="time-number" id="days">00</span>
-        <span class="time-label">DAYS</span>
-      </div>
-      <div class="time-box">
-        <span class="time-number" id="hours">00</span>
-        <span class="time-label">HOURS</span>
-      </div>
-      <div class="time-box">
-        <span class="time-number" id="minutes">00</span>
-        <span class="time-label">MINUTES</span>
-      </div>
-      <div class="time-box">
-        <span class="time-number" id="seconds">00</span>
-        <span class="time-label">SECONDS</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section red" id="details">
-  <div class="inner">
-    <p class="label">Race Day Information</p>
-    <h2>Save the Date</h2>
-    <p class="intro">
-      Dengan penuh sukacita, kami mengundang Anda untuk hadir
-      di perayaan ulang tahun pertama:
-    </p>
-
-    <h2 style="font-size:clamp(1.5rem,5vw,2.7rem); margin-top:25px;">
-      Muhammad Arrasya Khalid Ilmi Rezkirawan
-    </h2>
-
-    <div class="event-grid">
-      <div class="event-card">
-        <strong>📅 HARI & TANGGAL</strong>
-        <p>Sabtu, 24 Oktober 2026</p>
-      </div>
-      <div class="event-card">
-        <strong>⏰ WAKTU</strong>
-        <p>16.00 WITA – selesai</p>
-      </div>
-      <div class="event-card">
-        <strong>📍 LOKASI</strong>
-        <p>Aula Hotel Laura</p>
-      </div>
-      <div class="event-card">
-        <strong>🏁 DRESS CODE</strong>
-        <p>Merah, hitam, atau putih (opsional)</p>
-      </div>
-    </div>
-
-    <p class="note">
-      Kehadiran dan doa Anda adalah hadiah terindah bagi Arrasya dan keluarga.
-    </p>
-  </div>
-</section>
-
-<section class="section dark" id="moments">
-  <div class="inner">
-    <p class="label">A Little Memory from the Pit Lane</p>
-    <h2>Our Little Champion</h2>
-    <p class="intro">
-      Satu tahun tumbuh, belajar, tertawa, dan membawa begitu banyak kebahagiaan.
-    </p>
-
-    <div class="video-frame">
-      <video class="birthday-video"
-             autoplay muted loop playsinline controls preload="metadata">
-        <source src="./Arasya-video.mp4" type="video/mp4">
-        Browser Anda tidak mendukung video.
-      </video>
-    </div>
-  </div>
-</section>
-
-<section class="section light" id="rsvp">
-  <div class="inner">
-    <p class="label">Confirm Your Attendance</p>
-    <h2>Join the Celebration</h2>
-    <p class="intro">
-      Beri kabar kepada kami apakah Anda dapat hadir
-      di hari spesial Arrasya.
-    </p>
-
-    <form class="rsvp-form" id="rsvpForm">
-      <label for="guestName">
-        NAMA TAMU
-        <input id="guestName" type="text"
-               placeholder="Tulis nama Anda" required>
-      </label>
-
-      <label for="attendance">
-        KONFIRMASI KEHADIRAN
-        <select id="attendance" required>
-          <option value="" selected disabled>Pilih jawaban</option>
-          <option value="InsyaAllah hadir">InsyaAllah hadir</option>
-          <option value="Mohon maaf, belum bisa hadir">
-            Mohon maaf, belum bisa hadir
-          </option>
-        </select>
-      </label>
-
-      <button class="button" type="submit">
-        KIRIM RSVP VIA WHATSAPP ↗
-      </button>
-    </form>
-
-    <p class="note">
-      RSVP WhatsApp akan berfungsi setelah nomor tuan rumah
-      diisi pada bagian JavaScript.
-    </p>
-  </div>
-</section>
-
-</main>
-
-<footer>MADE WITH LOVE FOR ARRASYA • 🏁</footer>
-
 <audio id="bgMusic" loop preload="auto">
   <source src="./Lagu-Arrasya.mp3" type="audio/mpeg">
 </audio>
 
-<button class="music-button" id="musicButton" type="button">
+<button id="musicButton" class="music-button"
+        type="button" aria-pressed="false">
   🎵 Putar Lagu
 </button>
 
+<header class="hero">
+  <div class="flag" aria-hidden="true">🏁 🏎️ 🏁</div>
+  <p class="tag">YOU ARE INVITED TO</p>
+
+  <h1>BABY<br><span>ARASYA</span><br>TURNS ONE!</h1>
+
+  <img src="./Arasya.jpg"
+       alt="Baby Arrasya, little racing champion"
+       class="baby-photo">
+
+  <p class="subtitle">
+    One year of love, laughter &amp; little adventures.<br>
+    Get ready to race into a special celebration!
+  </p>
+
+  <div class="car" aria-hidden="true">🏎️💨</div>
+
+  <a href="#details" class="btn" id="startEngines">
+    START YOUR ENGINES! →
+  </a>
+
+  <p class="note">A little racer is turning ONE!</p>
+</header>
+
+<div class="checkered" aria-hidden="true"></div>
+
+<section>
+  <p class="tag">THE BIG RACE</p>
+  <h2>LET'S CELEBRATE!</h2>
+
+  <p class="intro-copy">
+    Our little champion is turning one!<br>
+    Join us for a day full of love, joy<br>
+    and unforgettable memories.
+  </p>
+
+  <div class="countdown" aria-label="Countdown menuju acara">
+    <div class="time"><strong id="days">--</strong><small>DAYS</small></div>
+    <div class="time"><strong id="hours">--</strong><small>HOURS</small></div>
+    <div class="time"><strong id="minutes">--</strong><small>MINUTES</small></div>
+    <div class="time"><strong id="seconds">--</strong><small>SECONDS</small></div>
+  </div>
+
+  <p class="note" id="countdownNote">
+    Menghitung waktu menuju hari spesial Arrasya 🏁
+  </p>
+</section>
+
+<section id="details">
+  <p class="tag">RACE DAY INFORMATION</p>
+  <h2>🏁 EVENT DETAILS</h2>
+
+  <div class="card">
+    <p>🏆 <strong>THE BIRTHDAY STAR</strong></p>
+
+    <div class="birthday-video-frame">
+      <video class="birthday-video" controls playsinline preload="metadata">
+        <source src="./Arasya-video.mp4" type="video/mp4">
+        Browser kamu belum mendukung video.
+      </video>
+    </div>
+
+    <h2 class="birthday-name">
+      Muhammad Arrasya Khalid Ilmi Rezkirawan
+    </h2>
+
+    <p>First Birthday Celebration</p>
+    <hr>
+
+    <p class="detail-label">📅 Date</p>
+    <p class="detail-value">Sabtu, 24 Oktober 2026</p>
+
+    <p class="detail-label">⏰ Time</p>
+    <p class="detail-value">16:00 WITA</p>
+
+    <p class="detail-label">📍 Race Track</p>
+    <p class="detail-value">Aula Hotel Laura</p>
+  </div>
+
+  <p class="note">Jangan lupa set alarmmu!</p>
+</section>
+
+<section>
+  <p class="tag">JOIN THE GRID</p>
+  <h2>Apakah Kamu <span class="red">Akan Hadir di Hari Spesialku?</span></h2>
+
+  <p class="intro-copy">
+    Your presence will make our little racer's day even more special!
+  </p>
+
+  <div class="card">
+    <form id="rsvpForm">
+      <label for="guest">Nama tamu</label>
+      <input id="guest" type="text"
+             placeholder="Masukkan nama kamu" required>
+
+      <label for="attendance">Konfirmasi kehadiran</label>
+      <select id="attendance" required>
+        <option value="Hadir">Iya, aku akan hadir!</option>
+        <option value="Tidak hadir">Maaf, belum bisa hadir</option>
+      </select>
+
+      <button class="submit-button" type="submit">
+        SEND RSVP VIA WHATSAPP
+      </button>
+    </form>
+
+    <p class="note">Konfirmasi dikirim melalui WhatsApp.</p>
+  </div>
+</section>
+
+<div class="checkered" aria-hidden="true"></div>
+
+<footer>
+  <p>🏎️ BABY ARASYA TURNS ONE 🏁</p>
+  <p>Ready, Set, Celebrate!</p>
+  <p>Made with ❤️ for our little champion</p>
+</footer>
+
 <script>
-// WAKTU ACARA: 24 Oktober 2026, pukul 16.00 WITA.
+// COUNTDOWN — Sabtu, 24 Oktober 2026, pukul 16.00 WITA
 const eventDate = new Date("2026-10-24T16:00:00+08:00");
 
 function updateCountdown() {
-  const distance = eventDate.getTime() - Date.now();
+  const diff = eventDate.getTime() - Date.now();
 
-  if (distance <= 0) {
-    document.getElementById("countdown").innerHTML =
-      '<p style="grid-column:1/-1;font-weight:900;">IT’S RACE DAY! 🏁</p>';
+  if (diff <= 0) {
+    document.getElementById("days").textContent = "0";
+    document.getElementById("hours").textContent = "0";
+    document.getElementById("minutes").textContent = "0";
+    document.getElementById("seconds").textContent = "0";
+    document.getElementById("countdownNote").textContent =
+      "Hari spesial Arrasya telah tiba! 🏁";
     return;
   }
 
-  const values = {
-    days: Math.floor(distance / 86400000),
-    hours: Math.floor((distance % 86400000) / 3600000),
-    minutes: Math.floor((distance % 3600000) / 60000),
-    seconds: Math.floor((distance % 60000) / 1000)
-  };
-
-  for (const [id, value] of Object.entries(values)) {
-    document.getElementById(id).textContent =
-      String(value).padStart(2, "0");
-  }
+  document.getElementById("days").textContent =
+    Math.floor(diff / 86400000);
+  document.getElementById("hours").textContent =
+    Math.floor((diff % 86400000) / 3600000);
+  document.getElementById("minutes").textContent =
+    Math.floor((diff % 3600000) / 60000);
+  document.getElementById("seconds").textContent =
+    Math.floor((diff % 60000) / 1000);
 }
 
 updateCountdown();
@@ -533,13 +540,12 @@ const startButton = document.getElementById("startEngines");
 
 async function playMusic() {
   try {
-    music.volume = 0.7;
     await music.play();
     musicButton.textContent = "🔊 Matikan Lagu";
     musicButton.setAttribute("aria-pressed", "true");
     return true;
   } catch (error) {
-    musicButton.textContent = "🎵 Coba Putar Lagi";
+    musicButton.textContent = "🎵 Putar Lagu";
     console.error("Musik gagal diputar:", error);
     return false;
   }
@@ -551,53 +557,54 @@ function pauseMusic() {
   musicButton.setAttribute("aria-pressed", "false");
 }
 
-// Tombol START mencoba memutar musik saat pengunjung mengeklik.
+// START mencoba memutar musik ketika pengunjung mengeklik.
 startButton.addEventListener("click", () => {
   playMusic();
 });
 
+// Tombol musik di kiri atas untuk putar/matikan lagu.
 musicButton.addEventListener("click", async () => {
   if (music.paused) {
     const success = await playMusic();
+
     if (!success) {
-      alert("Musik gagal diputar. Periksa file Lagu-Arrasya.mp3 di folder utama repository GitHub.");
+      alert(
+        "Musik belum bisa diputar. Pastikan file Lagu-Arrasya.mp3 " +
+        "ada di folder utama GitHub dan namanya sama persis."
+      );
     }
   } else {
     pauseMusic();
   }
 });
 
-// Video autoplay tanpa suara.
-const video = document.querySelector(".birthday-video");
-if (video) {
-  video.muted = true;
-  video.play().catch(() => {
-    console.log("Tekan tombol play pada video untuk memutarnya.");
-  });
-}
+// RSVP WhatsApp
+document.getElementById("rsvpForm").addEventListener("submit", function(e) {
+  e.preventDefault();
 
-// GANTI dengan nomor WhatsApp tuan rumah, tanpa tanda +.
-// Contoh format: 6281234567890
-const whatsappNumber = "628XXXXXXXXXX";
-
-document.getElementById("rsvpForm").addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const guestName = document.getElementById("guestName").value.trim();
+  const guest = document.getElementById("guest").value.trim();
   const attendance = document.getElementById("attendance").value;
 
-  if (whatsappNumber === "628XXXXXXXXXX") {
-    alert("Nomor WhatsApp belum diatur. Ganti 628XXXXXXXXXX di kode HTML terlebih dahulu.");
+  // Ganti dengan nomor WhatsApp tuan rumah, tanpa tanda +.
+  const phone = "628XXXXXXXXXX";
+
+  if (phone === "628XXXXXXXXXX") {
+    alert(
+      "Nomor WhatsApp tuan rumah belum diatur. " +
+      "Ganti 628XXXXXXXXXX di kode HTML terlebih dahulu."
+    );
     return;
   }
 
   const message =
-    `Halo, saya ${guestName}. Konfirmasi RSVP ulang tahun pertama Arrasya: ${attendance}.`;
+    "Hello! RSVP ulang tahun Baby Arrasya 🎂🏎️\n" +
+    "Nama: " + guest + "\n" +
+    "Kehadiran: " + attendance;
 
-  const url =
-    `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-
-  window.open(url, "_blank", "noopener,noreferrer");
+  window.open(
+    "https://wa.me/" + phone + "?text=" + encodeURIComponent(message),
+    "_blank"
+  );
 });
 </script>
 
