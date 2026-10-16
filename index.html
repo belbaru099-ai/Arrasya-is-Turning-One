@@ -682,8 +682,8 @@ document.getElementById("startEngines").addEventListener("click", async () => {
 
 
 /* RSVP ARRASYA — GOOGLE SHEETS */
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwE23c39LloWQRNgb2vL9DqEbJXWwQVpKERKrGz24kg42FqXWNIhoDwePR_S4qy_qU/exec?callback=tesWishe";
-
+const SCRIPT_URL = "
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwE23c39LloWQRNgb2vL9DqEbJXWwQVpKERKrGz24kg42FqXWNIhoDwePR_S4qy_qU/exec";
 const rsvpForm = document.getElementById("rsvpForm");
 const wishesList = document.getElementById("wishesList");
 const rsvpMessage = document.getElementById("rsvpMessage");
@@ -743,12 +743,10 @@ function loadWishes() {
     script.remove();
   };
 
-  
 script.src = SCRIPT_URL +
-  "?callback=" + callbackName +
+  "?callback=" + encodeURIComponent(callbackName) +
   "&t=" + Date.now();
 
-script.async = true;
 document.body.appendChild(script);
 }
 
