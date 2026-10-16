@@ -533,7 +533,6 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
-
 const music = document.getElementById("bgMusic");
 const musicButton = document.getElementById("musicButton");
 const startButton = document.getElementById("startEngines");
@@ -542,26 +541,30 @@ async function playMusic() {
   try {
     await music.play();
     musicButton.textContent = "🔊 Matikan Lagu";
-    return true;
+    musicButton.setAttribute("aria-pressed", "true");
   } catch (error) {
     musicButton.textContent = "🎵 Putar Lagu";
-    return false;
+    console.log("Musik belum bisa diputar:", error);
   }
 }
 
 function pauseMusic() {
   music.pause();
   musicButton.textContent = "🎵 Putar Lagu";
+  musicButton.setAttribute("aria-pressed", "false");
 }
 
 musicButton.addEventListener("click", async () => {
   if (music.paused) {
-    const played = await playMusic();
+    await playMusic();
+  } else {
+    pauseMusic();
+  }
+});
 
-    if (!played) {
-      alert(
-        "Lagu gagal diputar. Pastikan file Lagu-Arrasya.mp3 ada di folder yang sama dengan index.html."
-      );
+startButton.addEventListener("click", () => {
+  playMusic();
+});
     }
   } else {
     pauseMusic();
