@@ -680,31 +680,91 @@ document.getElementById("startEngines").addEventListener("click", async () => {
   }
 });
 
-// RSVP WHATSAPP
-document.getElementById("rsvpForm").addEventListener("submit", function(e) {
-  e.preventDefault();
+/* RSVP DAN WISHES — TERSIMPAN DI BROWSER INI */
+const rsvpForm = document.getElementById("rsvpForm");
+const wishesList = document.getElementById("wishesList");
+const rsvpMessage = document.getElementById("rsvpMessage");
+const storageKey = "arrasyaBirthdayWishes";
 
-  const guest = document.getElementById("guest").value.trim();
-  const attendance = document.getElementById("attendance").value;
+function getWishes() {
+  try {
+    return JSON.parse(localStorage.getItem(storageKey) || "[]");
+  } catch (error) {
+    return [];
+  }
+}
 
-  // Ganti dengan nomor WhatsApp tuan rumah, kode negara 62 tanpa tanda +
-  const phone = "628XXXXXXXXXX";
+function renderWishes() {
+  const wishes = getWishes();
+  wishesList.replaceChildren();
 
-  if (phone === "628XXXXXXXXXX") {
-    alert("Nomor WhatsApp tuan rumah perlu diatur terlebih dahulu agar RSVP bisa dikirim.");
+  if (wishes.length === 0) {
+    const empty = document.createElement("p");
+    empty.className = "note";
+    empty.textContent = "Belum ada ucapan. Jadilah yang pertama!";
+    wishesList.appendChild(empty);
     return;
   }
 
-  const message =
-    "Hello! RSVP ulang tahun Baby Arrasya 🎂🏎️\n" +
-    "Nama: " + guest + "\n" +
-    "Kehadiran: " + attendance;
+  wishes.slice().reverse().forEach(item => {
+    const entry = document.createElement("div");
+    entry.style.cssText =
+      "text-align:left;padding:14px;margin:12px 0;" +
+      "background:#111;border:1px solid #5a3030;border-radius:12px;";
 
-  window.open(
-    "https://wa.me/" + phone + "?text=" + encodeURIComponent(message),
-    "_blank"
-  );
+    const name = document.createElement("strong");
+    name.style.color = "#ff4148";
+    name.textContent = item.name;
+
+    const status = document.createElement("p");
+    status.style.margin = "5px 0";
+    status.textContent =
+      item.attendance === "Hadir"
+        ? "🏁 Akan hadir"
+        : "💌 Belum bisa hadir";
+
+    const message = document.createElement("p");
+    message.style.cssText = "margin:8px 0 0;white-space:pre-wrap;";
+    message.textContent = item.wishes;
+
+    entry.append(name, status, message);
+    wishesList.appendChild(entry);
+  });
+}
+
+rsvpForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const name = document.getElementById("guest").value.trim();
+  const attendance = document.getElementById("attendance").value;
+  const wishes = document.getElementById("wishes").value.trim();
+
+  if (!name || !wishes) {
+    rsvpMessage.textContent = "Nama dan wishes harus diisi ya ❤️";
+    return;
+  }
+
+  try {
+    const entries = getWishes();
+    entries.push({
+      name,
+      attendance,
+      wishes,
+      date: new Date().toISOString()
+    });
+
+    localStorage.setItem(storageKey, JSON.stringify(entries));
+    renderWishes();
+    rsvpForm.reset();
+    rsvpMessage.textContent =
+      "Terima kasih! Ucapanmu sudah tampil di halaman ini ❤️";
+  } catch (error) {
+    rsvpMessage.textContent =
+      "Ucapan belum bisa disimpan di browser ini.";
+  }
 });
+
+renderWishes();
 </script>
 
 </body>
