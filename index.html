@@ -743,11 +743,13 @@ function loadWishes() {
     script.remove();
   };
 
-  script.src = SCRIPT_URL +
-    "?callback=" + encodeURIComponent(callbackName) +
-    "&t=" + Date.now();
+  
+script.src = SCRIPT_URL +
+  "?callback=" + callbackName +
+  "&t=" + Date.now();
 
-  document.body.appendChild(script);
+script.async = true;
+document.body.appendChild(script);
 }
 
 rsvpForm.addEventListener("submit", async function (event) {
