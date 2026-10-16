@@ -3,16 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Arrasya Turns One!</title>
+<meta name="theme-color" content="#190707">
+<title>Baby Arrasya Turns One!</title>
 
 <style>
+:root {
+  --red: #ed252e;
+  --dark: #101010;
+  --white: #fff;
+  --muted: #ccc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
+  margin: 0;
   font-family: Arial, sans-serif;
   background:
-    radial-gradient(ellipse at 50% 0%, #721414 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 0%, #721414, transparent 55%),
     linear-gradient(180deg, #180707, #101010 48%, #1b0808);
-  color: white;
+  color: var(--white);
   text-align: center;
   overflow-x: hidden;
 }
@@ -23,16 +39,11 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 45px 20px;
+  padding: 70px 18px 45px;
   position: relative;
   isolation: isolate;
   overflow: hidden;
   background:
-    linear-gradient(
-      180deg,
-      rgba(12, 8, 8, .25),
-      rgba(15, 10, 10, .7)
-    ),
     repeating-linear-gradient(
       165deg,
       transparent 0 70px,
@@ -47,81 +58,182 @@ body {
   position: absolute;
   z-index: -1;
   width: 150%;
-  height: 180px;
+  height: 130px;
   left: -25%;
   bottom: 5%;
   transform: rotate(-12deg);
-  border-top: 12px solid #eee;
-  border-bottom: 12px solid #e52323;
   background: repeating-linear-gradient(
     90deg,
     #f5f5f5 0 30px,
     #e52323 30px 60px
   );
-  opacity: .16;
-  filter: blur(1px);
+  opacity: .12;
 }
 
 .hero::after {
-  content: "🏁  🏎️  🏁";
+  content: "🏁 🏎️ 🏁";
   position: absolute;
-  top: 7%;
-  right: -12px;
-  font-size: 25px;
-  transform: rotate(8deg);
-  opacity: .75;
+  top: 22px;
+  right: 10px;
+  font-size: 22px;
 }
 
-section {
-  padding: 60px 22px;
-  position: relative;
-  background:
-    radial-gradient(ellipse at top, #351010 0%, transparent 65%),
-    #111;
+.flag {
+  font-size: 22px;
+  margin-bottom: 10px;
 }
 
-#details {
-  background:
-    repeating-linear-gradient(
-      135deg,
-      rgba(255,255,255,.025) 0 2px,
-      transparent 2px 24px
-    ),
-    linear-gradient(180deg, #1b1b1b, #300909 55%, #171717);
+.tag {
+  color: #ff777c;
+  font-size: .82rem;
+  letter-spacing: 2px;
+  font-weight: bold;
+  margin: 8px 0 12px;
 }
 
-.card {
-  background: linear-gradient(145deg, #292929, #171717);
-  border: 1px solid #555;
-  border-radius: 18px;
-  box-shadow: 0 12px 35px rgba(0,0,0,.35);
-  padding: 25px 18px;
-  margin: 18px auto;
-  max-width: 420px;
-  line-height: 1.9;
+h1 {
+  font-size: clamp(2.3rem, 8vw, 4.5rem);
+  line-height: 1.05;
+  margin: 8px 0 20px;
 }
-  .baby-photo {
+
+h1 span,
+.red {
+  color: #ff4148;
+}
+
+.baby-photo {
   display: block;
   width: 220px;
   max-width: 75%;
   height: 260px;
   object-fit: cover;
   object-position: center 25%;
-  margin: 18px auto;
-  border: 3px solid #ff3434;
+  margin: 12px auto 22px;
+  border: 3px solid var(--red);
   border-radius: 16px;
-  box-sizing: border-box;
+  box-shadow: 0 8px 30px #0006;
+}
+
+.subtitle {
+  max-width: 620px;
+  font-size: clamp(1rem, 3.8vw, 1.25rem);
+  line-height: 1.7;
+  margin: 8px auto 16px;
+}
+
+.car {
+  font-size: 30px;
+  margin: 2px 0 15px;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--red);
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid white;
+  border-radius: 999px;
+  padding: 14px 22px;
+  box-shadow: 0 5px 0 #8d1117;
+}
+
+.btn:hover {
+  background: #ff4148;
+}
+
+.note {
+  color: #d5d5d5;
+  font-size: .92rem;
+  line-height: 1.6;
+  margin: 18px auto 0;
+}
+
+.checkered {
+  height: 14px;
+  background: repeating-linear-gradient(
+    90deg, white 0 14px, #171717 14px 28px
+  );
+  opacity: .75;
+}
+
+section {
+  padding: 50px 16px;
+  background:
+    radial-gradient(ellipse at top, #351010, transparent 65%),
+    #111;
+}
+
+section h2 {
+  font-size: clamp(1.5rem, 5vw, 2.3rem);
+  line-height: 1.25;
+}
+
+.intro-copy {
+  color: var(--muted);
+  line-height: 1.85;
+  max-width: 600px;
+  margin: 0 auto 24px;
+}
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 9px;
+  width: min(100%, 520px);
+  margin: 28px auto 16px;
+}
+
+.time {
+  min-width: 0;
+  padding: 16px 4px;
+  background: linear-gradient(145deg, #292929, #171717);
+  border: 1px solid #5a3030;
+  border-bottom: 3px solid var(--red);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+}
+
+.time strong {
+  font-size: clamp(1.35rem, 5vw, 2rem);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.time small {
+  font-size: clamp(.58rem, 2vw, .75rem);
+  letter-spacing: 1px;
+  color: #ddd;
+}
+
+#details {
+  background: linear-gradient(180deg, #1b1b1b, #300909 55%, #171717);
+}
+
+.card {
+  background: linear-gradient(145deg, #292929, #171717);
+  border: 1px solid #555;
+  border-radius: 18px;
+  box-shadow: 0 12px 35px #0006;
+  padding: 24px 16px;
+  margin: 18px auto;
+  max-width: 480px;
+  line-height: 1.7;
 }
 
 .birthday-video-frame {
   width: 100%;
-  max-width: 240px;
-  margin: 15px auto;
+  max-width: 250px;
+  margin: 18px auto;
   padding: 4px;
-  box-sizing: border-box;
-  border: 2px solid #ff3434;
+  border: 2px solid var(--red);
   border-radius: 14px;
   overflow: hidden;
+  background: #111;
 }
 
 .birthday-video {
@@ -130,44 +242,155 @@ section {
   height: auto;
   max-height: 320px;
   object-fit: contain;
+  border-radius: 9px;
+}
+
+.birthday-name {
+  font-size: clamp(1.3rem, 4.8vw, 1.8rem);
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+  margin: 18px 0 10px;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #555;
+  margin: 22px 0;
+}
+
+.detail-label {
+  font-weight: bold;
+  margin: 14px 0 3px;
+}
+
+.detail-value {
+  margin: 0;
+}
+
+form {
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin: 12px 0 6px;
+}
+
+input,
+select {
+  display: block;
+  width: 100%;
+  padding: 13px 12px;
+  background: #111;
+  color: white;
+  border: 1px solid #666;
+  border-radius: 8px;
+  font: inherit;
+  margin-bottom: 16px;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 14px;
+  background: var(--red);
+  color: white;
+  font-weight: bold;
+  border: 0;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.music-button {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 999;
+  background: var(--red);
+  color: white;
+  border: 2px solid white;
+  border-radius: 999px;
+  padding: 9px 12px;
+  font-size: .82rem;
+  box-shadow: 0 4px 14px #0006;
+  cursor: pointer;
+}
+
+footer {
+  padding: 30px 16px;
+  background: #0c0c0c;
+  color: #ddd;
+  line-height: 1.7;
+}
+
+@media (max-width: 420px) {
+  .hero {
+    padding: 65px 15px 40px;
+  }
+
+  .baby-photo {
+    width: 200px;
+    height: 240px;
+  }
+
+  .countdown {
+    gap: 6px;
+  }
+
+  .time {
+    padding: 13px 2px;
+  }
+
+  .card {
+    padding: 21px 13px;
+  }
+
+  .music-button {
+    top: 8px;
+    left: 8px;
+    padding: 8px 10px;
+    font-size: .78rem;
+  }
 }
 </style>
 </head>
 
 <body>
-<audio id="bgMusic" loop>
+
+<audio id="bgMusic" loop preload="metadata">
   <source src="./Lagu-Arrasya.mp3" type="audio/mpeg">
+  Browser kamu tidak mendukung audio.
 </audio>
 
-<button id="musicButton" type="button"
-  style="position:fixed;top:15px;left:15px;z-index:999;
-  background:#e52323;color:white;border:2px solid white;
-  border-radius:30px;padding:12px 16px;cursor:pointer;">
+<button id="musicButton" class="music-button" type="button">
   🎵 Putar Lagu
 </button>
-<div class="hero">
-  <div class="flag">🏁 🏎️ 🏁</div>
 
+<header class="hero">
+  <div class="flag">🏁 🏎️ 🏁</div>
   <p class="tag">YOU ARE INVITED TO</p>
 
   <h1>BABY<br><span>ARASYA</span><br>TURNS ONE!</h1>
+
   <img
-  src="./Arasya.jpg"
-  alt="Baby Arrasya, little racing champion"
-  class="baby-photo"
->
+    src="./Arasya.jpg"
+    alt="Baby Arrasya, little racing champion"
+    class="baby-photo"
+  >
 
   <p class="subtitle">
-    One year of love, laughter & little adventures.<br>
+    One year of love, laughter &amp; little adventures.<br>
     Get ready to race into a special celebration!
   </p>
 
   <div class="car">🏎️💨</div>
 
-  <a href="#details" class="btn">START YOUR ENGINES! →</a>
+  <a href="#details" class="btn" id="startEngines">
+    START YOUR ENGINES! →
+  </a>
 
   <p class="note">A little racer is turning ONE!</p>
-</div>
+</header>
 
 <div class="checkered"></div>
 
@@ -175,7 +398,7 @@ section {
   <p class="tag">THE BIG RACE</p>
   <h2>LET'S CELEBRATE!</h2>
 
-  <p style="line-height:1.9;color:#ccc">
+  <p class="intro-copy">
     Our little champion is turning one!<br>
     Join us for a day full of love, joy<br>
     and unforgettable memories.
@@ -188,69 +411,69 @@ section {
     <div class="time"><strong id="seconds">--</strong><small>SECONDS</small></div>
   </div>
 
-  <p class="note">Countdown akan aktif setelah tanggal acara diatur.</p>
+  <p class="note" id="countdownNote">
+    Menghitung waktu menuju hari spesial Arrasya 🏁
+  </p>
 </section>
 
-<section id="details" style="background:#191919">
+<section id="details">
   <p class="tag">RACE DAY INFORMATION</p>
   <h2>🏁 EVENT DETAILS</h2>
 
   <div class="card">
-  <p>🏆 <strong>THE BIRTHDAY STAR</strong></p>
+    <p>🏆 <strong>THE BIRTHDAY STAR</strong></p>
 
-<div class="birthday-video-frame">
-  <video
-    class="birthday-video"
-    autoplay
-    muted
-    loop
-    playsinline
-    controls
-    preload="metadata"
-  >
-    <source src="./Arasya-video.mp4" type="video/mp4">
-    Browser kamu belum mendukung video.
-  </video>
-</div>
+    <div class="birthday-video-frame">
+      <video class="birthday-video" controls playsinline preload="metadata">
+        <source src="./Arasya-video.mp4" type="video/mp4">
+        Browser kamu tidak mendukung video.
+      </video>
+    </div>
 
-<h2 class="red">Muhammad Arrasya Khalid Ilmi Rezkirawan</h2>
+    <h2 class="birthday-name">
+      Muhammad Arrasya Khalid Ilmi Rezkirawan
+    </h2>
+
     <p>First Birthday Celebration</p>
-    <hr style="border-color:#444;margin:20px 0">
+    <hr>
 
-    <p>📅 <strong>Date</strong></p>
-    <p>Sabtu, 24 Oktober 2026</p>
+    <p class="detail-label">📅 Date</p>
+    <p class="detail-value">Sabtu, 24 Oktober 2026</p>
 
-    <p style="margin-top:15px">⏰ <strong>Time</strong></p>
-    <p>C16:00 WITA </p>
+    <p class="detail-label">⏰ Time</p>
+    <p class="detail-value">16:00 WITA</p>
 
-    <p style="margin-top:15px">📍 <strong>Race Track</strong></p>
-    <p>Aula Hotel Laura</p>
+    <p class="detail-label">📍 Race Track</p>
+    <p class="detail-value">Aula Hotel Laura</p>
   </div>
 
-  <p class="note">Jangan Lupa Set Alarmmu!.</p>
+  <p class="note">Jangan lupa set alarmmu!</p>
 </section>
 
 <section>
   <p class="tag">JOIN THE GRID</p>
-  <h2>Apakah Kamu  <span class="red">Akan Hadir Di Hari Spesialku?</span></h2>
+  <h2>Apakah Kamu <span class="red">Akan Hadir di Hari Spesialku?</span></h2>
 
-  <p style="color:#ccc;line-height:1.8;margin-bottom:20px">
+  <p class="intro-copy">
     Your presence will make our little racer's day even more special!
   </p>
 
   <div class="card">
     <form id="rsvpForm">
-      <label>Nama tamu</label>
+      <label for="guest">Nama tamu</label>
       <input id="guest" type="text" placeholder="Masukkan nama kamu" required>
 
-      <label>Konfirmasi kehadiran</label>
-      <select id="attendance" style="width:100%;padding:13px;background:#111;color:white;border-radius:6px;margin:8px 0 20px">
-        <option value="Hadir">Iya, Aku Akan Hadir!</option>
+      <label for="attendance">Konfirmasi kehadiran</label>
+      <select id="attendance">
+        <option value="Hadir">Iya, aku akan hadir!</option>
         <option value="Tidak hadir">Maaf, belum bisa hadir</option>
       </select>
 
-      <button type="submit" style="width:100%">SEND RSVP VIA WHATSAPP</button>
+      <button class="submit-button" type="submit">
+        SEND RSVP VIA WHATSAPP
+      </button>
     </form>
+
     <p class="note">Konfirmasi dikirim melalui WhatsApp.</p>
   </div>
 </section>
@@ -264,23 +487,18 @@ section {
 </footer>
 
 <script>
-/*
-  SETEL TANGGAL ACARA DI SINI.
-  Format: new Date("2026-12-25T10:00:00+08:00")
-  Ganti contoh tanggal dengan tanggal acara yang benar.
-*/
 const eventDate = new Date("2026-10-24T16:00:00+08:00");
 
 function updateCountdown() {
-  if (!eventDate) return;
-
   const diff = eventDate.getTime() - Date.now();
+  const ids = ["days", "hours", "minutes", "seconds"];
 
   if (diff <= 0) {
-    document.getElementById("days").textContent = "0";
-    document.getElementById("hours").textContent = "0";
-    document.getElementById("minutes").textContent = "0";
-    document.getElementById("seconds").textContent = "0";
+    ids.forEach(id => {
+      document.getElementById(id).textContent = "0";
+    });
+    document.getElementById("countdownNote").textContent =
+      "Hari spesial Arrasya telah tiba! 🏁";
     return;
   }
 
@@ -294,8 +512,47 @@ function updateCountdown() {
     Math.floor((diff % 60000) / 1000);
 }
 
-setInterval(updateCountdown, 1000);
 updateCountdown();
+setInterval(updateCountdown, 1000);
+
+const music = document.getElementById("bgMusic");
+const musicButton = document.getElementById("musicButton");
+const startButton = document.getElementById("startEngines");
+
+async function playMusic() {
+  try {
+    await music.play();
+    musicButton.textContent = "🔊 Matikan Lagu";
+    return true;
+  } catch (error) {
+    musicButton.textContent = "🎵 Putar Lagu";
+    return false;
+  }
+}
+
+function pauseMusic() {
+  music.pause();
+  musicButton.textContent = "🎵 Putar Lagu";
+}
+
+musicButton.addEventListener("click", async () => {
+  if (music.paused) {
+    const played = await playMusic();
+
+    if (!played) {
+      alert(
+        "Lagu gagal diputar. Pastikan file Lagu-Arrasya.mp3 ada di folder yang sama dengan index.html."
+      );
+    }
+  } else {
+    pauseMusic();
+  }
+});
+
+startButton.addEventListener("click", () => {
+  // Klik tombol ini mencoba memulai musik sebelum browser berpindah ke detail.
+  playMusic();
+});
 
 document.getElementById("rsvpForm").addEventListener("submit", function(e) {
   e.preventDefault();
@@ -303,42 +560,25 @@ document.getElementById("rsvpForm").addEventListener("submit", function(e) {
   const guest = document.getElementById("guest").value.trim();
   const attendance = document.getElementById("attendance").value;
 
-  /*
-    GANTI 628XXXXXXXXXX DENGAN NOMOR WHATSAPP TUAN RUMAH.
-    Gunakan kode negara 62 tanpa tanda +.
-  */
+  // Ganti dengan nomor WhatsApp tuan rumah, kode negara 62 tanpa tanda +.
   const phone = "628XXXXXXXXXX";
 
-  const message =
-    "Hello! RSVP ulang tahun Baby Arasya 🎂🏎️%0A" +
-    "Nama: " + encodeURIComponent(guest) + "%0A" +
-    "Kehadiran: " + encodeURIComponent(attendance);
-
   if (phone === "628XXXXXXXXXX") {
-    alert("Website sudah dibuat! Nomor WhatsApp tuan rumah perlu diatur agar RSVP bisa dikirim.");
+    alert("Nomor WhatsApp tuan rumah perlu diatur terlebih dahulu.");
     return;
   }
 
-  window.open("https://wa.me/" + phone + "?text=" + message, "_blank");
-});
-</script>
-<script>
-const music = document.getElementById("bgMusic");
-const musicButton = document.getElementById("musicButton");
+  const message =
+    "Hello! RSVP ulang tahun Baby Arrasya 🎂🏎️\n" +
+    "Nama: " + guest + "\n" +
+    "Kehadiran: " + attendance;
 
-musicButton.addEventListener("click", async () => {
-  if (music.paused) {
-    try {
-      await music.play();
-      musicButton.textContent = "🔊 Matikan Lagu";
-    } catch (error) {
-      musicButton.textContent = "🎵 Coba Putar Lagi";
-    }
-  } else {
-    music.pause();
-    musicButton.textContent = "🎵 Putar Lagu";
-  }
+  window.open(
+    "https://wa.me/" + phone + "?text=" + encodeURIComponent(message),
+    "_blank"
+  );
 });
 </script>
+
 </body>
 </html>
