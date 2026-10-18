@@ -650,6 +650,164 @@ section.reveal.visible {
     animation: none;
   }
 }
+  /* ===== ARRASYA RACING INTRO ===== */
+
+#racingIntro {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: #050505;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+}
+
+#racingIntro.hidden {
+  display: none;
+}
+
+.intro-screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .8s ease;
+}
+
+.intro-screen.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.intro-kicker {
+  color: #ff333b;
+  letter-spacing: 5px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.intro-title {
+  font-size: clamp(35px, 9vw, 68px);
+  font-weight: 900;
+  line-height: 1.05;
+  margin: 18px 0;
+  animation: introZoom 1s ease both;
+}
+
+.intro-title span {
+  color: #ed252e;
+}
+
+.intro-date {
+  letter-spacing: 4px;
+  font-size: 13px;
+  margin: 8px;
+}
+
+.intro-loading {
+  font-size: 14px;
+  letter-spacing: 5px;
+  margin-bottom: 20px;
+}
+
+.loading-track {
+  width: min(260px, 75vw);
+  height: 4px;
+  background: #333;
+  overflow: hidden;
+}
+
+.loading-fill {
+  height: 100%;
+  width: 0;
+  background: #ed252e;
+  transition: width .15s linear;
+}
+
+.intro-road {
+  position: relative;
+  width: 115vw;
+  height: 100px;
+  margin: 30px 0;
+  background: #242424;
+  border-top: 4px solid #ed252e;
+  border-bottom: 4px solid white;
+  transform: rotate(-7deg);
+  box-shadow: 0 0 35px #ed252e44;
+}
+
+.intro-road::after {
+  content: "";
+  position: absolute;
+  top: 45px;
+  left: 0;
+  width: 200%;
+  border-top: 3px dashed white;
+  animation: roadMove 1s linear infinite;
+}
+
+.intro-car {
+  position: absolute;
+  top: 20px;
+  left: -100px;
+  font-size: 45px;
+  animation: carRace 3s linear infinite;
+}
+
+.intro-button {
+  margin-top: 25px;
+  padding: 15px 25px;
+  background: #ed252e;
+  color: white;
+  border: 2px solid white;
+  border-radius: 40px;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 0 20px #ed252e66;
+}
+
+.intro-button:hover {
+  background: white;
+  color: #ed252e;
+}
+
+@keyframes introZoom {
+  from {
+    opacity: 0;
+    transform: scale(.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes roadMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes carRace {
+  from { left: -100px; }
+  to { left: calc(100% + 100px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-road::after,
+  .intro-car {
+    animation: none;
+  }
+}
 </style>
 
 <!-- WhatsApp Preview -->
@@ -669,6 +827,59 @@ section.reveal.visible {
 </head>
 
 <body>
+  <!-- ARRASYA RACING OPENING -->
+
+<div id="racingIntro">
+
+  <!-- LOADING SCREEN -->
+  <div class="intro-screen active" id="introLoading">
+
+    <p class="intro-kicker">WELCOME TO THE GRID</p>
+
+    <h1 class="intro-title">
+      BABY ARRASYA<br>
+      <span>TURNS ONE!</span>
+    </h1>
+
+    <p class="intro-loading">
+      PREPARING RACE...
+      <span id="loadingPercent">0%</span>
+    </p>
+
+    <div class="loading-track">
+      <div class="loading-fill" id="loadingFill"></div>
+    </div>
+
+  </div>
+
+  <!-- RACING CIRCUIT OPENING -->
+  <div class="intro-screen" id="introCircuit">
+
+    <p class="intro-kicker">READY FOR THE BIG RACE?</p>
+
+    <div class="intro-road">
+      <div class="intro-car">🏎️💨</div>
+    </div>
+
+    <h1 class="intro-title">
+      BABY <span>ARRASYA</span><br>
+      IS TURNING ONE!
+    </h1>
+
+    <p class="intro-date">24 OCTOBER 2026</p>
+
+    <p>ONE LITTLE RACER. ONE BIG CELEBRATION.</p>
+
+    <button
+      class="intro-button"
+      id="enterRace"
+      type="button">
+      START YOUR ENGINES! 🏁
+    </button>
+
+  </div>
+
+</div>
 
 <audio id="bgMusic" loop preload="metadata">
   <source src="./Lagu-Arrasya.mp3" type="audio/mpeg">
@@ -1079,6 +1290,54 @@ const revealObserver = new IntersectionObserver(entries => {
 document.querySelectorAll("section.reveal").forEach(section => {
   revealObserver.observe(section);
 });
+  // ===== ARRASYA INTRO SEQUENCE =====
+
+(function () {
+  const overlay = document.getElementById("racingIntro");
+  const loadingScreen = document.getElementById("introLoading");
+  const circuitScreen = document.getElementById("introCircuit");
+  const loadingFill = document.getElementById("loadingFill");
+  const loadingPercent = document.getElementById("loadingPercent");
+  const enterButton = document.getElementById("enterRace");
+
+  if (!overlay || !loadingScreen || !circuitScreen) return;
+
+  let progress = 0;
+
+  const loadingTimer = setInterval(() => {
+    progress += Math.floor(Math.random() * 5) + 2;
+
+    if (progress >= 100) {
+      progress = 100;
+      clearInterval(loadingTimer);
+
+      loadingFill.style.width = "100%";
+      loadingPercent.textContent = "100%";
+
+      setTimeout(() => {
+        loadingScreen.classList.remove("active");
+        circuitScreen.classList.add("active");
+      }, 500);
+
+    } else {
+      loadingFill.style.width = progress + "%";
+      loadingPercent.textContent = progress + "%";
+    }
+  }, 120);
+
+  enterButton.addEventListener("click", () => {
+    overlay.classList.add("hidden");
+
+    const bigRace = document.getElementById("big-race");
+
+    if (bigRace) {
+      bigRace.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+  });
+})();
 </script>
 
 </body>
