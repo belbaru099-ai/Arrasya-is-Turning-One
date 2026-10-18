@@ -808,6 +808,17 @@ section.reveal.visible {
     animation: none;
   }
 }
+  #guestGreeting {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-style: normal !important;
+  font-weight: 800 !important;
+  font-size: clamp(28px, 7vw, 42px) !important;
+  line-height: 1.2;
+  letter-spacing: 1px;
+  text-transform: none;
+  text-shadow: none !important;
+  -webkit-text-stroke: 0 !important;
+}
 </style>
 
 <!-- WhatsApp Preview -->
@@ -1306,11 +1317,10 @@ document.querySelectorAll("section.reveal").forEach(section => {
   const params = new URLSearchParams(window.location.search);
   const guestName = params.get("to");
 
-  if (guestName && guestGreeting) {
-    guestGreeting.textContent = guestName;
-    guestGreeting.style.fontSize = "clamp(32px, 8vw, 58px)";
-    guestGreeting.style.overflowWrap = "anywhere";
-  }
+ if (guestName && guestGreeting) {
+  guestGreeting.textContent = guestName;
+  guestGreeting.style.overflowWrap = "anywhere";
+}
 
   // Pastikan elemen utama tersedia
   if (
