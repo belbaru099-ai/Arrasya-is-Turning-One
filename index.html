@@ -1336,7 +1336,11 @@ if (guestName && guestGreeting) {
   }, 120);
 
   enterButton.addEventListener("click", () => {
-    overlay.classList.add("hidden");
+  overlay.classList.add("hidden");
+
+  // Buka halaman awal yang berisi countdown
+  window.scrollTo(0, 0);
+});
 
     const bigRace = document.getElementById("big-race");
 
