@@ -874,19 +874,19 @@ section.reveal.visible {
 #countdown-section .countdown::after {
   content: "💨🏎️";
   position: absolute;
-  left: -70px;
+  left: auto;
+  right: -70px;
   bottom: -42px;
   font-size: 27px;
   animation: countdownCarDrive 5s linear infinite;
   pointer-events: none;
 }
-
 @keyframes countdownCarDrive {
   from {
-    left: -70px;
+    right: -70px;
   }
   to {
-    left: calc(100% + 70px);
+    right: calc(100% + 70px);
   }
 }
 
