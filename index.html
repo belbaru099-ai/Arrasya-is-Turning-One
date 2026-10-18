@@ -427,6 +427,47 @@ footer p { margin: 5px; }
   box-shadow: 0 0 20px rgba(237, 37, 46, 0.4);
   margin: 20px auto;
 }
+  
+/* MINI ALBUM ARRASYA */
+.gallery-section {
+  background: linear-gradient(180deg, #190707, #111);
+  overflow: hidden;
+}
+
+.gallery-subtitle {
+  color: #ddd;
+  margin: -10px auto 24px;
+}
+
+.gallery-track {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding: 8px 4px 18px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #ed252e #222;
+}
+
+.gallery-track img {
+  flex: 0 0 72%;
+  width: 72%;
+  height: 330px;
+  object-fit: cover;
+  border: 2px solid #ed252e;
+  border-radius: 15px;
+  scroll-snap-align: center;
+  box-shadow: 0 8px 24px #0007;
+}
+
+@media (min-width: 600px) {
+  .gallery-track img {
+    flex-basis: 260px;
+    width: 260px;
+    height: 340px;
+  }
+}
 </style>
 
 <!-- WhatsApp Preview -->
@@ -519,6 +560,27 @@ footer p { margin: 5px; }
     Join us for a day full of love, joy<br>
     and unforgettable memories.
   </p>
+</section>
+
+<section class="gallery-section" id="gallery">
+  <p class="tag">OUR LITTLE CHAMPION</p>
+  <h2>📸 ARRASYA'S LITTLE ALBUM</h2>
+  <p class="gallery-subtitle">
+    Little moments, endless love ❤️
+    <br>Geser untuk melihat foto lainnya →
+  </p>
+
+  <div class="gallery-track">
+    <img src="./arrasya-1.PNG" alt="Kenangan Arrasya 1" loading="lazy">
+    <img src="./arrasya-2.PNG" alt="Kenangan Arrasya 2" loading="lazy">
+    <img src="./arrasya-3.PNG" alt="Kenangan Arrasya 3" loading="lazy">
+    <img src="./arrasya-4.PNG" alt="Kenangan Arrasya 4" loading="lazy">
+    <img src="./arrasya-5.PNG" alt="Kenangan Arrasya 5" loading="lazy">
+    <img src="./arrasya-6.PNG" alt="Kenangan Arrasya 6" loading="lazy">
+    <img src="./arrasya-7.PNG" alt="Kenangan Arrasya 7" loading="lazy">
+    <img src="./arrasya-8.PNG" alt="Kenangan Arrasya 8" loading="lazy">
+    <img src="./arrasya-9.PNG" alt="Kenangan Arrasya 9" loading="lazy">
+  </div>
 </section>
 
 <section id="details">
