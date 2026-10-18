@@ -1290,7 +1290,8 @@ const revealObserver = new IntersectionObserver(entries => {
 document.querySelectorAll("section.reveal").forEach(section => {
   revealObserver.observe(section);
 });
-  // ===== ARRASYA INTRO SEQUENCE =====
+ 
+/* ===== ARRASYA INTRO SEQUENCE ===== */
 
 (function () {
   const overlay = document.getElementById("racingIntro");
@@ -1299,56 +1300,57 @@ document.querySelectorAll("section.reveal").forEach(section => {
   const loadingFill = document.getElementById("loadingFill");
   const loadingPercent = document.getElementById("loadingPercent");
   const enterButton = document.getElementById("enterRace");
-  // Membaca nama tamu dari link undangan
-const params = new URLSearchParams(window.location.search);
-const guestName = params.get("to");
-const guestGreeting = document.getElementById("guestGreeting");
+  const guestGreeting = document.getElementById("guestGreeting");
 
-if (guestName && guestGreeting) {
-  guestGreeting.textContent = guestName;
-  guestGreeting.style.fontSize = "clamp(32px, 8vw, 58px)";
-  guestGreeting.style.overflowWrap = "anywhere";
-}
+  // Nama tamu dari link, misalnya ?to=Tante%20Yuliyana
+  const params = new URLSearchParams(window.location.search);
+  const guestName = params.get("to");
 
-  if (!overlay || !loadingScreen || !circuitScreen) return;
-
- 
-let progress = 0;
-
-const loadingTimer = setInterval(() => {
-  progress = Math.min(progress + 5, 100);
-
-  loadingFill.style.width = progress + "%";
-  loadingPercent.textContent = progress + "%";
-
-  if (progress >= 100) {
-    clearInterval(loadingTimer);
-
-    setTimeout(() => {
-      loadingScreen.classList.remove("active");
-      circuitScreen.classList.add("active");
-    }, 500);
+  if (guestName && guestGreeting) {
+    guestGreeting.textContent = guestName;
+    guestGreeting.style.fontSize = "clamp(32px, 8vw, 58px)";
+    guestGreeting.style.overflowWrap = "anywhere";
   }
-}, 150);
 
-  enterButton.addEventListener("click", () => {
-  overlay.classList.add("hidden");
+  // Pastikan elemen utama tersedia
+  if (
+    !overlay ||
+    !loadingScreen ||
+    !circuitScreen ||
+    !loadingFill ||
+    !loadingPercent ||
+    !enterButton
+  ) {
+    console.error("Elemen opening tidak ditemukan.");
+    return;
+  }
 
-  // Buka halaman awal yang berisi countdown
-  window.scrollTo(0, 0);
-});
+  // Loading 0% sampai 100%
+  let progress = 0;
 
-    const bigRace = document.getElementById("big-race");
+  const loadingTimer = setInterval(() => {
+    progress = Math.min(progress + 5, 100);
 
-    if (bigRace) {
-      bigRace.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
+    loadingFill.style.width = progress + "%";
+    loadingPercent.textContent = progress + "%";
+
+    if (progress >= 100) {
+      clearInterval(loadingTimer);
+
+      setTimeout(() => {
+        loadingScreen.classList.remove("active");
+        circuitScreen.classList.add("active");
+      }, 500);
     }
+  }, 150);
+
+  // BUKA UNDANGAN menuju halaman countdown
+  enterButton.addEventListener("click", () => {
+    overlay.classList.add("hidden");
+    window.scrollTo(0, 0);
   });
 })();
+  
 </script>
-
 </body>
 </html>
