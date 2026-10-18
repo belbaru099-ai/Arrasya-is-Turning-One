@@ -819,6 +819,128 @@ section.reveal.visible {
   text-shadow: none !important;
   -webkit-text-stroke: 0 !important;
 }
+  /* ===== ARRASYA COUNTDOWN RACING ANIMATION ===== */
+
+/* Countdown muncul dengan efek zoom */
+#countdown-section .section-inner {
+  animation: countdownReveal 1s ease-out both;
+}
+
+@keyframes countdownReveal {
+  from {
+    opacity: 0;
+    transform: translateY(35px) scale(.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Angka countdown */
+#countdown-section .time-box {
+  position: relative;
+  overflow: hidden;
+  animation: countdownPulse 2s ease-in-out infinite;
+}
+
+#countdown-section .time-box:nth-child(2) {
+  animation-delay: .2s;
+}
+
+#countdown-section .time-box:nth-child(3) {
+  animation-delay: .4s;
+}
+
+#countdown-section .time-box:nth-child(4) {
+  animation-delay: .6s;
+}
+
+@keyframes countdownPulse {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Lintasan mini di bawah countdown */
+#countdown-section .countdown {
+  position: relative;
+  margin-bottom: 55px;
+}
+
+#countdown-section .countdown::after {
+  content: "🏎️💨";
+  position: absolute;
+  left: -70px;
+  bottom: -42px;
+  font-size: 27px;
+  animation: countdownCarDrive 5s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes countdownCarDrive {
+  from {
+    left: -70px;
+  }
+  to {
+    left: calc(100% + 70px);
+  }
+}
+
+/* Garis finish bergerak */
+#countdown-section .countdown::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -30px;
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    #ed252e 0 12px,
+    #fff 12px 24px,
+    #222 24px 36px
+  );
+  background-size: 72px 4px;
+  animation: finishLineMove .7s linear infinite;
+}
+
+@keyframes finishLineMove {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 72px 0;
+  }
+}
+
+/* Tombol Start Your Engines */
+#startEngines {
+  animation: startButtonGlow 2s ease-in-out infinite;
+}
+
+@keyframes startButtonGlow {
+  0%, 100% {
+    box-shadow: 0 0 8px #ed252e44;
+  }
+  50% {
+    box-shadow: 0 0 24px #ed252eaa;
+  }
+}
+
+/* Kurangi gerakan jika pengguna memilih reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  #countdown-section .section-inner,
+  #countdown-section .time-box,
+  #countdown-section .countdown::after,
+  #countdown-section .countdown::before,
+  #startEngines {
+    animation: none !important;
+  }
+}
 </style>
 
 <!-- WhatsApp Preview -->
