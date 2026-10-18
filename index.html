@@ -1312,28 +1312,24 @@ if (guestName && guestGreeting) {
 
   if (!overlay || !loadingScreen || !circuitScreen) return;
 
-  let progress = 0;
+ 
+let progress = 0;
 
-  const loadingTimer = setInterval(() => {
-    progress += Math.floor(Math.random() * 5) + 2;
+const loadingTimer = setInterval(() => {
+  progress = Math.min(progress + 5, 100);
 
-    if (progress >= 100) {
-      progress = 100;
-      clearInterval(loadingTimer);
+  loadingFill.style.width = progress + "%";
+  loadingPercent.textContent = progress + "%";
 
-      loadingFill.style.width = "100%";
-      loadingPercent.textContent = "100%";
+  if (progress >= 100) {
+    clearInterval(loadingTimer);
 
-      setTimeout(() => {
-        loadingScreen.classList.remove("active");
-        circuitScreen.classList.add("active");
-      }, 500);
-
-    } else {
-      loadingFill.style.width = progress + "%";
-      loadingPercent.textContent = progress + "%";
-    }
-  }, 120);
+    setTimeout(() => {
+      loadingScreen.classList.remove("active");
+      circuitScreen.classList.add("active");
+    }, 500);
+  }
+}, 150);
 
   enterButton.addEventListener("click", () => {
   overlay.classList.add("hidden");
