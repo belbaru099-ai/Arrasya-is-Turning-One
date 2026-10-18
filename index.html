@@ -861,22 +861,22 @@ section.reveal.visible {
       <div class="intro-car">🏎️💨</div>
     </div>
 
-    <h1 class="intro-title">
-      BABY <span>ARRASYA</span><br>
-      IS TURNING ONE!
-    </h1>
+    <p class="intro-kicker">SPECIAL INVITATION FOR</p>
 
-    <p class="intro-date">24 OCTOBER 2026</p>
+<h1 class="intro-title" id="guestGreeting">
+  BABY <span>ARRASYA</span><br>
+  IS TURNING ONE!
+</h1>
 
-    <p>ONE LITTLE RACER. ONE BIG CELEBRATION.</p>
+<p class="intro-date">24 OCTOBER 2026</p>
 
-    <button
-      class="intro-button"
-      id="enterRace"
-      type="button">
-      START YOUR ENGINES! 🏁
-    </button>
-
+<p>ONE LITTLE RACER. ONE BIG CELEBRATION.</p>
+<button
+  class="intro-button"
+  id="enterRace"
+  type="button">
+  BUKA UNDANGAN 🏁
+</button>
   </div>
 
 </div>
@@ -1299,6 +1299,16 @@ document.querySelectorAll("section.reveal").forEach(section => {
   const loadingFill = document.getElementById("loadingFill");
   const loadingPercent = document.getElementById("loadingPercent");
   const enterButton = document.getElementById("enterRace");
+  // Membaca nama tamu dari link undangan
+const params = new URLSearchParams(window.location.search);
+const guestName = params.get("to");
+const guestGreeting = document.getElementById("guestGreeting");
+
+if (guestName && guestGreeting) {
+  guestGreeting.textContent = guestName;
+  guestGreeting.style.fontSize = "clamp(32px, 8vw, 58px)";
+  guestGreeting.style.overflowWrap = "anywhere";
+}
 
   if (!overlay || !loadingScreen || !circuitScreen) return;
 
