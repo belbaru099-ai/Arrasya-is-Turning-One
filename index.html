@@ -874,22 +874,22 @@ section.reveal.visible {
 #countdown-section .countdown::after {
   content: "🏎️💨";
   position: absolute;
-  left: auto;
-  right: -70px;
+  left: -90px;
+  right: auto;
   bottom: -42px;
   font-size: 27px;
-  animation: countdownCarDrive 10s linear infinite;
+  white-space: nowrap;
+  animation: countdownCarDrive 15s linear infinite;
   pointer-events: none;
 }
 @keyframes countdownCarDrive {
   from {
-    right: -70px;
+    left: -90px;
   }
   to {
-    right: calc(100% + 70px);
+    left: calc(100% + 90px);
   }
 }
-
 /* Garis finish bergerak */
 #countdown-section .countdown::before {
   content: "";
@@ -940,6 +940,20 @@ section.reveal.visible {
   #startEngines {
     animation: none !important;
   }
+}
+  @keyframes carSpeedBounce {
+  0%, 100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-3px) rotate(2deg);
+  }
+}
+
+#countdown-section .countdown::after {
+  animation:
+    countdownCarDrive 15s linear infinite,
+    carSpeedBounce .25s ease-in-out infinite;
 }
 </style>
 
