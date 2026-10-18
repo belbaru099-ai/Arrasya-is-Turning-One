@@ -613,6 +613,43 @@ section.reveal.visible {
     transition: none;
   }
 }
+  
+/* 🏎️ Mobil mengelilingi box Event Details */
+#details .card {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Lintasan di tepi box */
+#details .card::before {
+  content: "🏎️";
+  position: absolute;
+  z-index: 5;
+  top: -19px;
+  left: 0;
+  font-size: 25px;
+  line-height: 1;
+  pointer-events: none;
+  offset-path: inset(-12px round 18px);
+  offset-distance: 0%;
+  offset-rotate: auto;
+  animation: raceAroundBox 7s linear infinite;
+}
+
+@keyframes raceAroundBox {
+  from {
+    offset-distance: 0%;
+  }
+  to {
+    offset-distance: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #details .card::before {
+    animation: none;
+  }
+}
 </style>
 
 <!-- WhatsApp Preview -->
