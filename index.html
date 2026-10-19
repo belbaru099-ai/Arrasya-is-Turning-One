@@ -1171,11 +1171,12 @@ section.reveal.visible {
     <form id="rsvpForm">
       <label for="guest">Nama tamu</label>
       <input
-        id="guest"
-        type="text"
-        placeholder="Masukkan Nama kamu"
-        required
-      >
+  type="text"
+  id="guestName"
+  placeholder="Nama tamu"
+  required
+  readonly
+>
 
       <label for="attendance">Konfirmasi kehadiran</label>
       <select id="attendance" required>
@@ -1448,6 +1449,11 @@ document.querySelectorAll("section.reveal").forEach(section => {
   // Nama tamu dari link, misalnya ?to=Tante%20Yuliyana
   const params = new URLSearchParams(window.location.search);
   const guestName = params.get("to");
+  const rsvpNameInput = document.getElementById("guestName");
+if (rsvpNameInput && guestName) {
+  rsvpNameInput.value = guestName;
+  rsvpNameInput.readOnly = true;
+}
 
  if (guestName && guestGreeting) {
   guestGreeting.textContent = guestName;
