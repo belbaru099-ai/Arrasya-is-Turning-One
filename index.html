@@ -955,6 +955,32 @@ section.reveal.visible {
     countdownCarDrive 15s linear infinite,
     carSpeedBounce .25s ease-in-out infinite;
 }
+  /* ===== WISHES: MINI SCROLL BOX ===== */
+#wishesList {
+  max-height: 360px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #ed252e #222;
+}
+
+#wishesList::-webkit-scrollbar {
+  width: 5px;
+}
+
+#wishesList::-webkit-scrollbar-thumb {
+  background: #ed252e;
+  border-radius: 10px;
+}
+
+#wishesList::-webkit-scrollbar-track {
+  background: #222;
+  border-radius: 10px;
+}
 </style>
 
 <!-- WhatsApp Preview -->
