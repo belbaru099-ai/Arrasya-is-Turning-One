@@ -1442,7 +1442,8 @@ document.body.appendChild(script);
 rsvpForm.addEventListener("submit", async function (event) {
   event.preventDefault();
 
-  const name = document.getElementById("guest").value.trim();
+  
+  const name = document.getElementById("guestName").value.trim();
   const attendance = document.getElementById("attendance").value;
   const wishes = document.getElementById("wishes").value.trim();
 
